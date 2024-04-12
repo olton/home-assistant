@@ -2,7 +2,7 @@ blueprint:
   name: Motion-activated Light (for Switch)
   description: Turn on a light when motion is detected.
   domain: automation
-  source_url: https://github.com/olton/home-assistant/
+  source_url: https://github.com/olton/home-assistant/components/blueprints/motion-light-switch.yaml
   author: Serhii Pimenov
   input:
     motion_entity:

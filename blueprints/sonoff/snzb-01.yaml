@@ -1,0 +1,70 @@
+---
+blueprint:
+  name: Sonoff Zigbee Button
+  description: >-
+    Setup actions for three functions of the SONOFF Zigbee button with Press,
+    Double Press, and Hold.
+  domain: automation
+  input:
+    button_id:
+      name: Button
+      description: The button to configure.
+      selector:
+        device:
+          filter:
+            - integration: mqtt
+              manufacturer: SONOFF
+              model: Wireless button
+    press_action:
+      name: Press Action
+      description: Action to perform on Press.
+      default: []
+      selector:
+        action: {}
+    double_press_action:
+      name: Double Press Action
+      description: Action to perform on Double Press.
+      default: []
+      selector:
+        action: {}
+    hold_action:
+      name: Hold Action
+      description: Action to perform on Hold.
+      default: []
+      selector:
+        action: {}
+  source_url: >-
+    https://github.com/olton/home-assistant/blueprints/sonoff/snzb-01.yaml
+triggers:
+  - trigger: device
+    device_id: !input button_id
+    domain: mqtt
+    type: action
+    subtype: single
+    id: single
+  - trigger: device
+    device_id: !input button_id
+    domain: mqtt
+    type: action
+    subtype: double
+    id: double
+  - trigger: device
+    device_id: !input button_id
+    domain: mqtt
+    type: action
+    subtype: hold
+    id: hold
+actions:
+  - choose:
+      - conditions:
+          - condition: trigger
+            id: single
+        sequence: !input press_action
+      - conditions:
+          - condition: trigger
+            id: double
+        sequence: !input double_press_action
+      - conditions:
+          - condition: trigger
+            id: hold
+        sequence: !input hold_action

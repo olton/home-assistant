@@ -1,6 +1,6 @@
 # home-assistant
 
-Home Assistant utils, scripts, blueprints, etc
+[Home Assistant](https://www.home-assistant.io/) utils, scripts, blueprints, etc...
 
 ## Blueprints
 

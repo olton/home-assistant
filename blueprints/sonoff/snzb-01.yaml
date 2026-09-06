@@ -1,6 +1,6 @@
 ---
 blueprint:
-  name: Sonoff Zigbee Button
+  name: Sonoff Zigbee Button over MQTT
   description: >-
     Setup actions for three functions of the SONOFF Zigbee button with Press,
     Double Press, and Hold.
@@ -34,7 +34,7 @@ blueprint:
       selector:
         action: {}
   source_url: >-
-    https://github.com/olton/home-assistant/blueprints/sonoff/snzb-01.yaml
+    https://github.com/olton/home-assistant/blob/master/blueprints/sonoff/snzb-01.yaml
 triggers:
   - trigger: device
     device_id: !input button_id
